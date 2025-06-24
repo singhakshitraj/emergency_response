@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 from validation_models.emergency import addEmergencyValidation,emergencyResolvedValidation
 
 router = APIRouter(
-    prefix='/emergency'
+    prefix='/emergency',
+    tags=['Emergency']
 )
 connection = connectToDB()
 cursor = connection.cursor()

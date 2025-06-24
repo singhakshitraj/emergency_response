@@ -5,7 +5,8 @@ from dotenv import load_dotenv
 from validation_models.additional_info import addAdditionalInfoValidation,deleteAdditionalInfoValidation
 
 router = APIRouter(
-    prefix='/info'
+    prefix='/info',
+    tags=['Additional Information']
 )
 load_dotenv()
 connection = connectToDB()

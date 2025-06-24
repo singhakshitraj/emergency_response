@@ -12,7 +12,8 @@ def connectToDB() -> connection :
             user = os.environ.get('USER'),
             password = os.environ.get('PASSWORD'),
             host = os.environ.get('HOST'),
-            port = os.environ.get('POST'),
+            port = os.environ.get('PORT'),
+            sslmode="require",
             cursor_factory=RealDictCursor
         )
         return new_connection

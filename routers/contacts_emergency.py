@@ -5,7 +5,8 @@ import os
 from dotenv import load_dotenv
 
 router = APIRouter(
-    prefix='/contact'
+    prefix='/contact',
+    tags=['Emergency Contacts']
 )
 
 db_connection = connectToDB()
