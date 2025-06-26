@@ -18,6 +18,7 @@ def getAdditionalInfo(SECRET_KEY:str=Header(...)):
         cursor.execute(
         '''
             SELECT * FROM additional_info
+            ORDER BY time DESC
         ''')
         info_list = cursor.fetchall()
         if info_list is None:

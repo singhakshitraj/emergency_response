@@ -19,7 +19,9 @@ def getEmergencyList(SECRET_KEY:str=Header(...)):
             '''
                 SELECT * FROM emergency
                 WHERE time >= NOW() - INTERVAL '2 Days'
-            '''
+                OR resolved=%s
+                ORDER BY time DESC
+            ''',(False,)
         )
         allEmergencies = cursor.fetchall()
         if allEmergencies is None:
