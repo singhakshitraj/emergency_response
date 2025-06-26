@@ -2,6 +2,7 @@ from fastapi import APIRouter,Header,HTTPException,status
 from db.connection import connectToDB
 import os
 from validation_models.check_user_validation import checkAdminOrUserValidation
+from dotenv import load_dotenv
 router = APIRouter(
     prefix='/check',
     tags=['Check User']
@@ -9,6 +10,7 @@ router = APIRouter(
 
 connection = connectToDB()
 cursor = connection.cursor()
+load_dotenv()
 
 @router.post('/')
 def checkUser(body:checkAdminOrUserValidation,SECRET_KEY:str=Header(...)):
