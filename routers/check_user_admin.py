@@ -10,7 +10,7 @@ router = APIRouter(
 connection = connectToDB()
 cursor = connection.cursor()
 
-@router.get('/')
+@router.post('/')
 def checkUser(body:checkAdminOrUserValidation,SECRET_KEY:str=Header(...)):
     if(SECRET_KEY == os.environ.get('SECRET_KEY')):
         cursor.execute(
