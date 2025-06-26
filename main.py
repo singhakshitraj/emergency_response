@@ -1,5 +1,5 @@
 from fastapi import FastAPI,status,Header,HTTPException
-from routers import contacts_emergency,additional_info,emergency
+from routers import contacts_emergency,additional_info,emergency,check_user_admin
 from fastapi.middleware.cors import CORSMiddleware
 from db.connection import connectToDB
 
@@ -17,6 +17,8 @@ app.add_middleware(
 app.include_router(contacts_emergency.router)
 app.include_router(additional_info.router)
 app.include_router(emergency.router)
+app.include_router(check_user_admin.router)
+
 @app.get('/',status_code=status.HTTP_200_OK)
 def fxn():
     return {'status_code':200,'message':'rest-api-functioning-properly'}
