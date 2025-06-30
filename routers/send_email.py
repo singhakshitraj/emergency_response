@@ -29,7 +29,7 @@ email_connection = ConnectionConfig(
 @router.post('')
 async def sendEmail(background_tasks:BackgroundTasks,email:sendEmailValidation,SECRET_KEY:str=Header(...)):
     if(SECRET_KEY == os.environ.get('SECRET_KEY')):
-        temp_email = 'akshit.22209@knit.ac.in' # REPLACE WITH email.email wherever temp_mail is referenced
+        temp_email = email.email
         otp = random.randrange(100000,999999)
         cursor.execute(
             '''
