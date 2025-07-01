@@ -4,7 +4,8 @@ from validation_models.device_id_validation import addDeviceIdValidation
 import os
 from dotenv import load_dotenv
 router = APIRouter(
-    prefix='/device'
+    prefix='/device',
+    tags=['Device Management']
 )
 connection = connectToDB()
 cursor = connection.cursor()
