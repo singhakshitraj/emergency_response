@@ -40,10 +40,10 @@ def addAUser(user:createUserValidation,SECRET_KEY:str=Header(...)):
             raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED,detail='Email associated with existing User')
         cursor.execute(
             '''
-                INSERT INTO all_users(email,role,phone_number,bank_number,department,reporting_manager)
-                VALUES(%s,%s,%s,%s,%s,%s)
+                INSERT INTO all_users(email,role,phone_number,bank_number,department,reporting_manager,name)
+                VALUES(%s,%s,%s,%s,%s,%s,%s)
                 returning *
-            ''',(user.email,user.role,user.phone,user.bank_number,user.department,user.reporting_manager)
+            ''',(user.email,user.role,user.phone,user.bank_number,user.department,user.reporting_manager,user.name)
         )
         new_user = cursor.fetchone()
         if new_user is None:
@@ -64,10 +64,10 @@ def editedDetails(user:createUserValidation,SECRET_KEY:str=Header(...)):
         cursor.execute(
             '''
                 UPDATE all_users
-                SET bank_number=%s,department=%s,phone_number=%s,reporting_manager=%s
+                SET bank_number=%s,department=%s,phone_number=%s,reporting_manager=%s,name=%s
                 WHERE email=%s
                 returning *
-            ''',(user.bank_number,user.department,user.phone,user.reporting_manager,user.email)
+            ''',(user.bank_number,user.department,user.phone,user.reporting_manager,user.name,user.email)
         )
         new_user = cursor.fetchone()
         if new_user is None:

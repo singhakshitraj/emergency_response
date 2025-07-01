@@ -8,6 +8,7 @@ class createUserValidation(BaseModel):
     bank_number:str
     department:str
     reporting_manager:Optional[str]
+    name:str
     
 class deleteUser(BaseModel):
     email:str
